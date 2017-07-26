@@ -1,4 +1,8 @@
 language: cpp
+addons:
+  apt:
+    packages:
+    - clang-3.3
 script:
   - scan-build scons -Q
   - scan-build scons -Q --lto
