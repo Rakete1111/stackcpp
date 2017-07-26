@@ -1,6 +1,6 @@
 # Contributing
 
-This is for issues (which include bugs and feature requests) and pull requests. If you have any questions, please ask them on IRC freenode #stackcpp or on [stackcpp's post]() on StackApps.
+This is for issues (which include bugs and feature requests) and pull requests. If you have any questions, please ask them on IRC freenode #stackcpp or on [stackcpp's post](https://stackapps.com/questions/7521/stackcpp-an-asynchronous-c11-library-for-the-stackexchange-api) on StackApps.
 
 --------
 

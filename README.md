@@ -58,4 +58,4 @@ Thanks for wanting to contribute! If you found a bug or want to see a specific f
 
 ## Questions?
 
-If you have any questions or enquiries, you can ask them on IRC freenode #stackcpp, or in the comment section of [stackcpp's StackApps post]().
+If you have any questions or enquiries, you can ask them on IRC freenode #stackcpp, or in the comment section of [stackcpp's StackApps post](https://stackapps.com/questions/7521/stackcpp-an-asynchronous-c11-library-for-the-stackexchange-api).
