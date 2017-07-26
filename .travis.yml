@@ -5,6 +5,7 @@ addons:
     - ubuntu-toolchain-r-test
     packages:
     - clang-3.3
+    - rapidjson-dev
 script:
   - scan-build scons -Q
   - scan-build scons -Q --lto
