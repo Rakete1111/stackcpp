@@ -1,11 +1,12 @@
 language: cpp
 addons:
   apt:
-    sources:
-    - ubuntu-toolchain-r-test
     packages:
     - clang-3.3
-    - rapidjson-dev
+sudo: required
+install:
+  - git clone https://github.com/miloyip/rapidjson rapidjson
+  - mv rapidjson/include/rapidjson /usr/include
 script:
   - scan-build scons -Q
   - scan-build scons -Q --lto
