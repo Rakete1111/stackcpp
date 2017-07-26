@@ -1,12 +1,17 @@
 language: cpp
 addons:
   apt:
+    sources:
+      - ubuntu-toolchain-r-test
     packages:
     - clang-3.3
+    - libboost-all-dev
+    - g++-5
 sudo: required
 install:
   - git clone https://github.com/miloyip/rapidjson rapidjson
   - sudo mv rapidjson/include/rapidjson /usr/include
+  - sudo mv /usr/bin/g++-5 /usr/bin/g++
 script:
   - scan-build scons -Q
   - scan-build scons -Q --lto
