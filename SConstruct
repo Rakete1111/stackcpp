@@ -2,13 +2,16 @@ import os
 
 env = Environment()
 
+gcc = os.getenv("CXX_GCC") or "g++"
+clang = os.getenv("CXX_CLANG") or "clang++"
+
 if "TERM" in os.environ:
     env["ENV"]["TERM"] = os.environ["TERM"]
 env["ENV"].update(x for x in os.environ.items() if x[0].startswith("CCC_"))
 
 AddOption("--lto", action="store_const", dest="flags", const="-flto")
 env.Append(CXXFLAGS=(GetOption("flags") or ""))
-env["CXX"] = "g++" if "-flto" in env["CXXFLAGS"] else "clang++"
+env["CXX"] = gcc if "-flto" in env["CXXFLAGS"] else clang
 
 suffix = "-lto" if "-flto" in env["CXXFLAGS"] else ""
 
