@@ -1,8 +1,4 @@
 language: cpp
-addons:
-  apt:
-    packages:
-    - scan-build
 script:
   - scan-build scons -Q
   - scan-build scons -Q --lto
