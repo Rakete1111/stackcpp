@@ -1,0 +1,6 @@
+build/
+bin/
+libstackcpp.a
+libstackcpp-lto.a
+libstackcpp.lib
+.sconsign.dblite
