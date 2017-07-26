@@ -16,7 +16,7 @@ Same as for bugs, make sure that the feature request has not already been create
 
 ## Code
 
-For every pull request there has to be an issue. I'll try to review every pull request as fast as I can and provide feedback. If a pull request isn't active for an extended period of time, it will get closed. It is important that:
+For every pull request there has to be an issue, but only if the pull request is for code changes. I'll try to review every pull request as fast as I can and provide feedback. If a pull request isn't active for an extended period of time, it will get closed. It is important that:
 
 - You name commits in a pull request appropriately.
 - You do not fix/implement multiple feature requests and/or bugs in a single pull request.
