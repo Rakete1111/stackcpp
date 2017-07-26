@@ -8,8 +8,9 @@ stackcpp is a static library, which relies on Boost. You'll need the following l
 
 - Boost.Iostreams
 - Boost.System
+- OpenSSL
 
-In additional to any other libraries your environment might require (for Linux, you also need `pthread`, `ssl` and `crypto`).
+In additional to any other libraries your environment might require (for Linux, you also need `pthread` and `crypto`).
 
 Although it is not every day that StackExchange adds new sites to its network, it is possible that the site list of stackcpp becomes out of date. I'll include the site in the next release, but in the mean time, you can execute the `update` utility, which updates the site list if there are any new sites available.
 
