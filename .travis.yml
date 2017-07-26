@@ -1,6 +1,8 @@
 language: cpp
 addons:
   apt:
+    sources:
+    - ubuntu-toolchain-r-test
     packages:
     - clang-3.3
 script:
