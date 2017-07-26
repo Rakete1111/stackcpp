@@ -6,7 +6,7 @@ addons:
 sudo: required
 install:
   - git clone https://github.com/miloyip/rapidjson rapidjson
-  - mv rapidjson/include/rapidjson /usr/include
+  - sudo mv rapidjson/include/rapidjson /usr/include
 script:
   - scan-build scons -Q
   - scan-build scons -Q --lto
