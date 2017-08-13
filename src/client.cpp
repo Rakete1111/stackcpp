@@ -53,7 +53,14 @@ namespace stackcpp {
 
 namespace {
 
-const std::unordered_map<sites, const std::string> site_identifiers = {
+// Workaround for CWG defect #2148.
+struct enum_hash final {
+    std::size_t operator()(sites site) const noexcept {
+        return static_cast<std::size_t>(site);
+    }
+};
+
+const std::unordered_map<sites, const std::string, enum_hash> site_identifiers = {
 #include "stackcpp/sites/map.txt"
 };
 
