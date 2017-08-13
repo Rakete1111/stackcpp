@@ -11,9 +11,11 @@ env["ENV"].update(x for x in os.environ.items() if x[0].startswith("CCC_"))
 
 AddOption("--lto", action="store_const", dest="flags", const="-flto")
 env.Append(CXXFLAGS=(GetOption("flags") or ""))
-env["CXX"] = gcc if "-flto" in env["CXXFLAGS"] else clang
+is_gcc = "-flto" in env["CXXFLAGS"]
 
-suffix = "-lto" if "-flto" in env["CXXFLAGS"] else ""
+env["CXX"] = gcc if is_gcc else clang
+
+suffix = "-lto" if is_gcc else ""
 
 env.Append(CXXFLAGS="-std=c++11 -pedantic -pedantic-errors -Wall -Wextra -Werror -Wconversion -O3")
 env.Append(CPPPATH=["include/"])
