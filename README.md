@@ -1,6 +1,6 @@
 # stackcpp
 
-![Travis CI build status](https://travis-ci.org/Rakete1111/stackcpp.svg?branch=master)
+[![Travis CI build status](https://travis-ci.org/Rakete1111/stackcpp.svg?branch=master)](https://travis-ci.org/Rakete1111/stackcpp)
 
 stackcpp is a C++11 asynchronous library for the [StackExchange API](https://api.stackexchange.com/docs).
 
