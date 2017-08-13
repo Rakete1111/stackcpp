@@ -14,6 +14,8 @@ env.Append(CXXFLAGS=(GetOption("flags") or ""))
 is_gcc = "-flto" in env["CXXFLAGS"]
 
 env["CXX"] = gcc if is_gcc else clang
+if is_gcc:
+    env["AR"] = "gcc-ar"
 
 suffix = "-lto" if is_gcc else ""
 
