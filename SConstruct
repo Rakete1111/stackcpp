@@ -16,6 +16,7 @@ is_gcc = "-flto" in env["CXXFLAGS"]
 env["CXX"] = gcc if is_gcc else clang
 if is_gcc:
     env["AR"] = "gcc-ar"
+    env["RANLIB"] = "gcc-ranlib"
 
 suffix = "-lto" if is_gcc else ""
 
