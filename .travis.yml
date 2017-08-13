@@ -13,7 +13,6 @@ install:
   - sudo mv rapidjson/include/rapidjson /usr/include
 before_script:
   - export CXX_GCC="g++-5"
-  - export CXX_CLANG="clang-3.3"
 script:
   - scan-build scons -Q
   - scan-build scons -Q --lto
