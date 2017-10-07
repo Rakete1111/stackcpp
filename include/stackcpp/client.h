@@ -89,7 +89,7 @@ public:
     integer_t remaining_quota() const noexcept;
 
     // Returns every undeleted answer.
-    std::future<std::vector<answer>> answers(const uinteger_t amount, const answer_restrict& restriction = {}) const;
+    std::future<std::vector<answer>> answers(uinteger_t amount, const answer_restrict& restriction = {}) const;
     std::future<std::vector<answer>> answers(const answer_restrict& restriction = {}) const;
 
     // Returns the answers with the given ids.
@@ -103,13 +103,13 @@ public:
     std::future<answer> answers_undo_accept(const unique_id& id, const answer_restrict& restriction = {}) const;
 
     // Returns the comments on the given answers.
-    std::future<std::vector<comment>> answers_comments(const std::vector<unique_id>& ids, const uinteger_t comments_per_answer, const comment_restrict& restriction = {}) const;
+    std::future<std::vector<comment>> answers_comments(const std::vector<unique_id>& ids, uinteger_t comments_per_answer, const comment_restrict& restriction = {}) const;
     std::future<std::vector<comment>> answers_comments(const std::vector<unique_id>& ids, const comment_restrict& restriction = {}) const;
-    std::future<std::vector<comment>> answers_comments(unique_id id, const uinteger_t comments_per_answer, const comment_restrict& restriction = {}) const;
+    std::future<std::vector<comment>> answers_comments(unique_id id, uinteger_t comments_per_answer, const comment_restrict& restriction = {}) const;
     std::future<std::vector<comment>> answers_comments(unique_id id, const comment_restrict& restriction = {}) const;
 
     // Deletes an answer if possible (this does not send a delete vote though).
-    std::future<void> answers_delete(unique_id id, const bool write = false) const;
+    std::future<void> answers_delete(unique_id id, bool write = false) const;
 
     // Returns an answer while downvoting it.
     std::future<answer> answers_downvote(const unique_id& id, const answer_restrict& restriction = {}) const;
@@ -137,7 +137,7 @@ public:
     std::future<answer> answers_undo_upvote(const unique_id& id, const answer_restrict& restriction = {}) const;
 
     // Returns all badges.
-    std::future<std::vector<badge>> badges(const uinteger_t amount, const badge_restrict& restriction = {}) const;
+    std::future<std::vector<badge>> badges(uinteger_t amount, const badge_restrict& restriction = {}) const;
     std::future<std::vector<badge>> badges(const badge_restrict& restriction = {}) const;
 
     // Returns the badges with the given ids.
@@ -145,29 +145,29 @@ public:
     std::future<badge> badges(const unique_id& id, const badge_restrict& restriction = {}) const;
 
     // Returns every non-tag badge.
-    std::future<std::vector<badge>> badges_name(const uinteger_t amount, const badge_restrict& restriction = {}) const;
+    std::future<std::vector<badge>> badges_name(uinteger_t amount, const badge_restrict& restriction = {}) const;
 
     // Returns recently awarded badges.
-    std::future<std::vector<badge>> badges_recipients(const uinteger_t amount, const badge_restrict& restriction = {}) const;
+    std::future<std::vector<badge>> badges_recipients(uinteger_t amount, const badge_restrict& restriction = {}) const;
 
     // Returns the recently awarded badges with given ids.
-    std::future<std::vector<badge>> badges_recipients(const std::vector<unique_id>& ids, const uinteger_t badges_per_badge, const badge_restrict& restriction = {}) const;
+    std::future<std::vector<badge>> badges_recipients(const std::vector<unique_id>& ids, uinteger_t badges_per_badge, const badge_restrict& restriction = {}) const;
     std::future<std::vector<badge>> badges_recipients(const std::vector<unique_id>& ids, const badge_restrict& restriction = {}) const;
-    std::future<std::vector<badge>> badges_recipients(unique_id id, const uinteger_t badges_per_badge, const badge_restrict& restriction = {}) const;
+    std::future<std::vector<badge>> badges_recipients(unique_id id, uinteger_t badges_per_badge, const badge_restrict& restriction = {}) const;
     std::future<std::vector<badge>> badges_recipients(unique_id id, const badge_restrict& restriction = {}) const;
 
     // Returns every tag badge.
-    std::future<std::vector<badge>> badges_tags(const uinteger_t amount, const badge_restrict& restriction = {}) const;
+    std::future<std::vector<badge>> badges_tags(uinteger_t amount, const badge_restrict& restriction = {}) const;
 
     // Returns every comment.
-    std::future<std::vector<comment>> comments(const uinteger_t amount, const comment_restrict& restriction = {}) const;
+    std::future<std::vector<comment>> comments(uinteger_t amount, const comment_restrict& restriction = {}) const;
 
     // Returns the comments with the given ids.
     std::future<std::vector<comment>> comments(const std::vector<unique_id>& ids, const comment_restrict& restriction = {}) const;
     std::future<comment> comments(const unique_id& id, const comment_restrict& restriction = {}) const;
 
     // Deletes a comment if possible.
-    std::future<void> comments_delete(unique_id id, const bool write = false) const;
+    std::future<void> comments_delete(unique_id id, bool write = false) const;
 
     // Returns a comment while editing it.
     std::future<comment> comments_edit(unique_id id, std::string body, comment_restrict restriction) const;
@@ -185,24 +185,24 @@ public:
     std::future<comment> comments_undo_upvote(const unique_id& id, const comment_restrict& restriction) const;
 
     // Returns a list of events since the given date.
-    std::future<std::vector<event>> events(const uinteger_t amount, const date_t& since) const;
-    std::future<std::vector<event>> events(const uinteger_t amount = default_amount) const;
+    std::future<std::vector<event>> events(uinteger_t amount, const date_t& since) const;
+    std::future<std::vector<event>> events(uinteger_t amount = default_amount) const;
     std::future<std::vector<event>> events(const date_t& since) const;
 
     // Returns a list of site statistics.
     std::future<objects::info> info() const;
 
     // Returns every post.
-    std::future<std::vector<post>> posts(const uinteger_t amount, const post_restrict& restriction = {}) const;
+    std::future<std::vector<post>> posts(uinteger_t amount, const post_restrict& restriction = {}) const;
 
     // Returns the posts with the given ids.
     std::future<std::vector<post>> posts(const std::vector<unique_id>& ids, const post_restrict& restriction = {}) const;
     std::future<post> posts(const unique_id& id, const post_restrict& restriction = {}) const;
 
     // Returns the comments on the given posts.
-    std::future<std::vector<comment>> posts_comments(const std::vector<unique_id>& ids, const uinteger_t comments_per_post, const comment_restrict& restriction = {}) const;
+    std::future<std::vector<comment>> posts_comments(const std::vector<unique_id>& ids, uinteger_t comments_per_post, const comment_restrict& restriction = {}) const;
     std::future<std::vector<comment>> posts_comments(const std::vector<unique_id>& ids, const comment_restrict& restriction = {}) const;
-    std::future<std::vector<comment>> posts_comments(unique_id id, const uinteger_t comments_per_post, const comment_restrict& restriction = {}) const;
+    std::future<std::vector<comment>> posts_comments(unique_id id, uinteger_t comments_per_post, const comment_restrict& restriction = {}) const;
     std::future<std::vector<comment>> posts_comments(unique_id id, const comment_restrict& restriction = {}) const;
 
     // Returns the suggested edits on the given posts.
@@ -216,18 +216,18 @@ public:
     std::future<comment> posts_comments_render(unique_id id, std::string body, comment_restrict restriction = {}) const;
 
     // Returns the revisions for the given post ids.
-    std::future<std::vector<revision>> posts_revisions(const std::vector<unique_id>& ids, const uinteger_t revisions_per_post, const data_t& restriction = {}) const;
+    std::future<std::vector<revision>> posts_revisions(const std::vector<unique_id>& ids, uinteger_t revisions_per_post, const data_t& restriction = {}) const;
     std::future<std::vector<revision>> posts_revisions(const std::vector<unique_id>& ids, const data_t& restriction = {}) const;
-    std::future<std::vector<revision>> posts_revisions(unique_id id, const uinteger_t revisions_per_post, const data_t& restriction = {}) const;
+    std::future<std::vector<revision>> posts_revisions(unique_id id, uinteger_t revisions_per_post, const data_t& restriction = {}) const;
     std::future<std::vector<revision>> posts_revisions(unique_id id, const data_t& restriction = {}) const;
 
     // Returns every privilege available.
-    std::future<std::vector<privilege>> privileges(const uinteger_t amount = default_amount) const;
+    std::future<std::vector<privilege>> privileges(uinteger_t amount = default_amount) const;
 
     // Returns every undeleted question.
-    std::future<std::vector<question>> questions(const uinteger_t amount, std::vector<std::string> tags, question_restrict restriction = {}) const;
-    std::future<std::vector<question>> questions(const uinteger_t amount, std::string tags, question_restrict restriction = {}) const;
-    std::future<std::vector<question>> questions(const uinteger_t amount, question_restrict restriction = {}) const;
+    std::future<std::vector<question>> questions(uinteger_t amount, std::vector<std::string> tags, question_restrict restriction = {}) const;
+    std::future<std::vector<question>> questions(uinteger_t amount, std::string tags, question_restrict restriction = {}) const;
+    std::future<std::vector<question>> questions(uinteger_t amount, question_restrict restriction = {}) const;
     std::future<std::vector<question>> questions(std::vector<std::string> tags, question_restrict restriction = {}) const;
     std::future<std::vector<question>> questions(std::string tag, question_restrict restriction = {}) const;
     std::future<std::vector<question>> questions(question_restrict restriction = {}) const;
@@ -237,9 +237,9 @@ public:
     std::future<question> questions(const unique_id& id, const question_restrict& restriction = {}) const;
 
     // Returns the answers to the given questions.
-    std::future<std::vector<answer>> questions_answers(const std::vector<unique_id>& ids, const uinteger_t answers_per_question, const answer_restrict& restriction = {}) const;
+    std::future<std::vector<answer>> questions_answers(const std::vector<unique_id>& ids, uinteger_t answers_per_question, const answer_restrict& restriction = {}) const;
     std::future<std::vector<answer>> questions_answers(const std::vector<unique_id>& ids, const answer_restrict& restriction = {}) const;
-    std::future<std::vector<answer>> questions_answers(unique_id id, const uinteger_t answers_per_question, const answer_restrict& restriction = {}) const;
+    std::future<std::vector<answer>> questions_answers(unique_id id, uinteger_t answers_per_question, const answer_restrict& restriction = {}) const;
     std::future<std::vector<answer>> questions_answers(unique_id id, const answer_restrict& restriction = {}) const;
 
     // Returns an answer while adding it to the given question.
@@ -252,13 +252,13 @@ public:
     std::future<std::vector<flag_option>> questions_close_options(const unique_id& id, const data_t& restriction = {}) const;
 
     // Returns the comments on the given questions.
-    std::future<std::vector<comment>> questions_comments(const std::vector<unique_id>& ids, const uinteger_t comments_per_question, const comment_restrict& restriction = {}) const;
+    std::future<std::vector<comment>> questions_comments(const std::vector<unique_id>& ids, uinteger_t comments_per_question, const comment_restrict& restriction = {}) const;
     std::future<std::vector<comment>> questions_comments(const std::vector<unique_id>& ids, const comment_restrict& restriction = {}) const;
-    std::future<std::vector<comment>> questions_comments(unique_id id, const uinteger_t comments_per_question, const comment_restrict& restriction = {}) const;
+    std::future<std::vector<comment>> questions_comments(unique_id id, uinteger_t comments_per_question, const comment_restrict& restriction = {}) const;
     std::future<std::vector<comment>> questions_comments(unique_id id, const comment_restrict& restriction = {}) const;
 
     // Deletes the given question if possible.
-    std::future<void> questions_delete(unique_id id, const bool write = false) const;
+    std::future<void> questions_delete(unique_id id, bool write = false) const;
 
     // Returns a question while downvoting it.
     std::future<question> questions_downvote(const unique_id& id, const data_t& restriction = {}) const;
@@ -286,23 +286,23 @@ public:
 
     // Returns linked questions to the given questions.
     std::future<std::vector<question>> questions_linked(
-            const std::vector<unique_id>& ids, const uinteger_t questions_per_question, const question_restrict& restriction = {}) const;
+            const std::vector<unique_id>& ids, uinteger_t questions_per_question, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> questions_linked(const std::vector<unique_id>& ids, const question_restrict& restriction = {}) const;
-    std::future<std::vector<question>> questions_linked(unique_id id, const uinteger_t questions_per_question, const question_restrict& restriction = {}) const;
+    std::future<std::vector<question>> questions_linked(unique_id id, uinteger_t questions_per_question, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> questions_linked(unique_id id, const question_restrict& restriction = {}) const;
 
     // Returns related questions to the given questions.
     std::future<std::vector<question>> questions_related(
-            const std::vector<unique_id>& ids, const uinteger_t questions_per_question, const question_restrict& restriction = {}) const;
+            const std::vector<unique_id>& ids, uinteger_t questions_per_question, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> questions_related(const std::vector<unique_id>& ids, const question_restrict& restriction = {}) const;
-    std::future<std::vector<question>> questions_related(unique_id id, const uinteger_t questions_per_question, const question_restrict& restriction = {}) const;
+    std::future<std::vector<question>> questions_related(unique_id id, uinteger_t questions_per_question, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> questions_related(unique_id id, const question_restrict& restriction = {}) const;
 
     // Returns a list of timelines for the given question.
     std::future<std::vector<question_timeline>> questions_timeline(
-            const std::vector<unique_id>& ids, const uinteger_t timelines_per_question, const data_t& restriction = {}) const;
+            const std::vector<unique_id>& ids, uinteger_t timelines_per_question, const data_t& restriction = {}) const;
     std::future<std::vector<question_timeline>> questions_timeline(const std::vector<unique_id>& ids, const data_t& restriction = {}) const;
-    std::future<std::vector<question_timeline>> questions_timeline(unique_id id, const uinteger_t timelines_per_question, const data_t& restriction = {}) const;
+    std::future<std::vector<question_timeline>> questions_timeline(unique_id id, uinteger_t timelines_per_question, const data_t& restriction = {}) const;
     std::future<std::vector<question_timeline>> questions_timeline(unique_id id, const data_t& restriction = {}) const;
 
     // Returns a question while upvoting it.
@@ -315,19 +315,19 @@ public:
     std::future<question> questions_add(std::string title, std::string body, std::vector<std::string> tags, data_t restriction = {}) const;
 
     // Returns a list of featured questions.
-    std::future<std::vector<question>> questions_featured(std::vector<std::string> tags, const uinteger_t amount, question_restrict restriction = {}) const;
-    std::future<std::vector<question>> questions_featured(std::string tag, const uinteger_t amount, question_restrict restriction = {}) const;
+    std::future<std::vector<question>> questions_featured(std::vector<std::string> tags, uinteger_t amount, question_restrict restriction = {}) const;
+    std::future<std::vector<question>> questions_featured(std::string tag, uinteger_t amount, question_restrict restriction = {}) const;
     std::future<std::vector<question>> questions_featured(std::vector<std::string> tags, question_restrict restriction = {}) const;
     std::future<std::vector<question>> questions_featured(std::string tag, question_restrict restriction = {}) const;
-    std::future<std::vector<question>> questions_featured(const uinteger_t amount, question_restrict restriction = {}) const;
+    std::future<std::vector<question>> questions_featured(uinteger_t amount, question_restrict restriction = {}) const;
     std::future<std::vector<question>> questions_featured(question_restrict restriction = {}) const;
 
     // Returns a list of questions with absolutely no answers.
-    std::future<std::vector<question>> questions_no_answers(std::vector<std::string> tags, const uinteger_t amount, question_restrict restriction = {}) const;
-    std::future<std::vector<question>> questions_no_answers(std::string tag, const uinteger_t amount, question_restrict restriction = {}) const;
+    std::future<std::vector<question>> questions_no_answers(std::vector<std::string> tags, uinteger_t amount, question_restrict restriction = {}) const;
+    std::future<std::vector<question>> questions_no_answers(std::string tag, uinteger_t amount, question_restrict restriction = {}) const;
     std::future<std::vector<question>> questions_no_answers(std::vector<std::string> tags, question_restrict restriction = {}) const;
     std::future<std::vector<question>> questions_no_answers(std::string tag, question_restrict restriction = {}) const;
-    std::future<std::vector<question>> questions_no_answers(const uinteger_t amount, question_restrict restriction = {}) const;
+    std::future<std::vector<question>> questions_no_answers(uinteger_t amount, question_restrict restriction = {}) const;
     std::future<std::vector<question>> questions_no_answers(question_restrict restriction = {}) const;
 
     // Returns a question while fake posting it.
@@ -335,15 +335,15 @@ public:
     std::future<question> questions_render(std::string title, std::string body, std::string tag, data_t restriction = {}) const;
 
     // Returns a list of as the engine marked unanswered questions.
-    std::future<std::vector<question>> questions_unanswered(std::vector<std::string> tags, const uinteger_t amount, question_restrict restriction = {}) const;
-    std::future<std::vector<question>> questions_unanswered(std::string tag, const uinteger_t amount, question_restrict restriction = {}) const;
+    std::future<std::vector<question>> questions_unanswered(std::vector<std::string> tags, uinteger_t amount, question_restrict restriction = {}) const;
+    std::future<std::vector<question>> questions_unanswered(std::string tag, uinteger_t amount, question_restrict restriction = {}) const;
     std::future<std::vector<question>> questions_unanswered(std::vector<std::string> tags, question_restrict restriction = {}) const;
     std::future<std::vector<question>> questions_unanswered(std::string tag, question_restrict restriction = {}) const;
-    std::future<std::vector<question>> questions_unanswered(const uinteger_t amount, question_restrict restriction = {}) const;
+    std::future<std::vector<question>> questions_unanswered(uinteger_t amount, question_restrict restriction = {}) const;
     std::future<std::vector<question>> questions_unanswered(question_restrict restriction = {}) const;
 
     // Returns a list of unanswered questions with the user's favorite tags.
-    std::future<std::vector<question>> questions_unanswered_my_tags(const uinteger_t amount, const question_restrict& restriction = {}) const;
+    std::future<std::vector<question>> questions_unanswered_my_tags(uinteger_t amount, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> questions_unanswered_my_tags(const question_restrict& restriction = {}) const;
 
     // Returns a list of revisions with the given guid.
@@ -351,30 +351,30 @@ public:
     std::future<revision> revisions(const std::string& guid, const data_t& restriction = {}) const;
 
     // Returns a list of questions that match the search values.
-    std::future<std::vector<question>> search(std::string title, const uinteger_t amount, const search_restrict& restriction = {}) const;
+    std::future<std::vector<question>> search(std::string title, uinteger_t amount, const search_restrict& restriction = {}) const;
     std::future<std::vector<question>> search(std::string title, const search_restrict& restriction = {}) const;
-    std::future<std::vector<question>> search(std::string title, const std::vector<std::string>& tagged, const uinteger_t amount, const search_restrict& restriction = {}) const;
+    std::future<std::vector<question>> search(std::string title, const std::vector<std::string>& tagged, uinteger_t amount, const search_restrict& restriction = {}) const;
     std::future<std::vector<question>> search(std::string title, const std::vector<std::string>& tagged, const search_restrict& restriction = {}) const;
-    std::future<std::vector<question>> search(std::string title, const std::vector<std::string>& tagged, const std::vector<std::string>& nottagged, const uinteger_t amount,
+    std::future<std::vector<question>> search(std::string title, const std::vector<std::string>& tagged, const std::vector<std::string>& nottagged, uinteger_t amount,
             const search_restrict& restriction = {}) const;
     std::future<std::vector<question>> search(
             std::string title, const std::vector<std::string>& tagged, const std::vector<std::string>& nottagged, const search_restrict& restriction = {}) const;
-    std::future<std::vector<question>> search(const std::vector<std::string>& tagged, const uinteger_t amount, const search_restrict& restriction = {}) const;
+    std::future<std::vector<question>> search(const std::vector<std::string>& tagged, uinteger_t amount, const search_restrict& restriction = {}) const;
     std::future<std::vector<question>> search(const std::vector<std::string>& tagged, const search_restrict& restriction = {}) const;
     std::future<std::vector<question>> search(
-            const std::vector<std::string>& tagged, const std::vector<std::string>& nottagged, const uinteger_t amount, const search_restrict& restriction = {}) const;
+            const std::vector<std::string>& tagged, const std::vector<std::string>& nottagged, uinteger_t amount, const search_restrict& restriction = {}) const;
     std::future<std::vector<question>> search(const std::vector<std::string>& tagged, const std::vector<std::string>& nottagged, const search_restrict& restriction = {}) const;
 
     // Returns a list of questions that match the advanced search parameters.
-    std::future<std::vector<question>> search_advanced(const uinteger_t amount, const search_restrict& restriction = {}) const;
+    std::future<std::vector<question>> search_advanced(uinteger_t amount, const search_restrict& restriction = {}) const;
     std::future<std::vector<question>> search_advanced(const search_restrict& restriction = {}) const;
 
     // Returns a list of similar questions.
-    std::future<std::vector<search_excerpt>> similar(const uinteger_t amount, const search_restrict& restriction = {}) const;
+    std::future<std::vector<search_excerpt>> similar(uinteger_t amount, const search_restrict& restriction = {}) const;
     std::future<std::vector<search_excerpt>> similar(const search_restrict& restriction = {}) const;
 
     // Returns a list of suggested edits.
-    std::future<std::vector<suggested_edit>> suggested_edits(const uinteger_t amount, const edit_restrict& restriction = {}) const;
+    std::future<std::vector<suggested_edit>> suggested_edits(uinteger_t amount, const edit_restrict& restriction = {}) const;
     std::future<std::vector<suggested_edit>> suggested_edits(const edit_restrict& restriction = {}) const;
 
     // Returns a list of suggested edits with the given ids.
@@ -382,9 +382,9 @@ public:
     std::future<suggested_edit> suggested_edits(const unique_id& id, const edit_restrict& restriction = {}) const;
 
     // Returns a list of every tag matching the name.
-    std::future<std::vector<tag>> tags(std::string name, const uinteger_t amount, const tag_restrict& restriction = {}) const;
+    std::future<std::vector<tag>> tags(std::string name, uinteger_t amount, const tag_restrict& restriction = {}) const;
     std::future<std::vector<tag>> tags(std::string name, const tag_restrict& restriction = {}) const;
-    std::future<std::vector<tag>> tags(const uinteger_t amount, const tag_restrict& restriction = {}) const;
+    std::future<std::vector<tag>> tags(uinteger_t amount, const tag_restrict& restriction = {}) const;
     std::future<std::vector<tag>> tags(const tag_restrict& restriction = {}) const;
 
     // Returns the tags with the given names.
@@ -392,37 +392,37 @@ public:
     std::future<tag> tags_info(const std::string& name, const tag_restrict& restriction = {}) const;
 
     // Returns a list of every moderator-only tag.
-    std::future<std::vector<tag>> tags_moderator(std::string name, const uinteger_t amount, const tag_restrict& restriction = {}) const;
+    std::future<std::vector<tag>> tags_moderator(std::string name, uinteger_t amount, const tag_restrict& restriction = {}) const;
     std::future<std::vector<tag>> tags_moderator(std::string name, const tag_restrict& restriction = {}) const;
-    std::future<std::vector<tag>> tags_moderator(const uinteger_t amount, const tag_restrict& restriction = {}) const;
+    std::future<std::vector<tag>> tags_moderator(uinteger_t amount, const tag_restrict& restriction = {}) const;
     std::future<std::vector<tag>> tags_moderator(const tag_restrict& restriction = {}) const;
 
     // Returns a list of required tags (by the specific site).
-    std::future<std::vector<tag>> tags_required(std::string name, const uinteger_t amount, const tag_restrict& restriction = {}) const;
+    std::future<std::vector<tag>> tags_required(std::string name, uinteger_t amount, const tag_restrict& restriction = {}) const;
     std::future<std::vector<tag>> tags_required(std::string name, const tag_restrict& restriction = {}) const;
-    std::future<std::vector<tag>> tags_required(const uinteger_t amount, const tag_restrict& restriction = {}) const;
+    std::future<std::vector<tag>> tags_required(uinteger_t amount, const tag_restrict& restriction = {}) const;
     std::future<std::vector<tag>> tags_required(const tag_restrict& restriction = {}) const;
 
     // Returns a list of tag synonyms.
-    std::future<std::vector<tag_synonym>> tags_synonyms(const uinteger_t amount, const synonym_restrict& restriction = {}) const;
+    std::future<std::vector<tag_synonym>> tags_synonyms(uinteger_t amount, const synonym_restrict& restriction = {}) const;
     std::future<std::vector<tag_synonym>> tags_synonyms(const synonym_restrict& restriction = {}) const;
 
     // Returns a list of FAQ questions for the given tags.
-    std::future<std::vector<question>> tags_faq(const std::vector<std::string>& tags, const uinteger_t amount, const data_t& restriction = {}) const;
+    std::future<std::vector<question>> tags_faq(const std::vector<std::string>& tags, uinteger_t amount, const data_t& restriction = {}) const;
     std::future<std::vector<question>> tags_faq(const std::vector<std::string>& tags, const data_t& restriction = {}) const;
-    std::future<std::vector<question>> tags_faq(std::string tag, const uinteger_t amount, const data_t& restriction = {}) const;
+    std::future<std::vector<question>> tags_faq(std::string tag, uinteger_t amount, const data_t& restriction = {}) const;
     std::future<std::vector<question>> tags_faq(std::string tag, const data_t& restriction = {}) const;
 
     // Returns a list of related tags to the given tags.
-    std::future<std::vector<tag>> tags_related(const std::vector<std::string>& tags, const uinteger_t amount, const data_t& restriction = {}) const;
+    std::future<std::vector<tag>> tags_related(const std::vector<std::string>& tags, uinteger_t amount, const data_t& restriction = {}) const;
     std::future<std::vector<tag>> tags_related(const std::vector<std::string>& tags, const data_t& restriction = {}) const;
-    std::future<std::vector<tag>> tags_related(std::string tag, const uinteger_t amount, const data_t& restriction = {}) const;
+    std::future<std::vector<tag>> tags_related(std::string tag, uinteger_t amount, const data_t& restriction = {}) const;
     std::future<std::vector<tag>> tags_related(std::string tag, const data_t& restriction = {}) const;
 
     // Returns a list of tag synonyms for the given tags.
-    std::future<std::vector<tag_synonym>> tags_synonyms(const std::vector<std::string>& tags, const uinteger_t tags_per_tag, const synonym_restrict& restriction = {}) const;
+    std::future<std::vector<tag_synonym>> tags_synonyms(const std::vector<std::string>& tags, uinteger_t tags_per_tag, const synonym_restrict& restriction = {}) const;
     std::future<std::vector<tag_synonym>> tags_synonyms(const std::vector<std::string>& tags, const synonym_restrict& restriction = {}) const;
-    std::future<std::vector<tag_synonym>> tags_synonyms(std::string tag, const uinteger_t tags_per_tag, const synonym_restrict& restriction = {}) const;
+    std::future<std::vector<tag_synonym>> tags_synonyms(std::string tag, uinteger_t tags_per_tag, const synonym_restrict& restriction = {}) const;
     std::future<std::vector<tag_synonym>> tags_synonyms(std::string tag, const synonym_restrict& restriction = {}) const;
 
     // Returns the top answerers active in the given tag within the specified period.
@@ -436,9 +436,9 @@ public:
     std::future<tag_wiki> tags_wikis(const std::string& tag, const data_t& restriction = {}) const;
 
     // Returns 'amount' users, optionally filtered with the specified name, optionally with every property and sorted with the specified type.
-    std::future<std::vector<user>> users(std::string username, const uinteger_t amount, user_restrict restriction = {}) const;
+    std::future<std::vector<user>> users(std::string username, uinteger_t amount, user_restrict restriction = {}) const;
     std::future<std::vector<user>> users(std::string username, user_restrict restriction = {}) const;
-    std::future<std::vector<user>> users(const uinteger_t amount, user_restrict restriction = {}) const;
+    std::future<std::vector<user>> users(uinteger_t amount, user_restrict restriction = {}) const;
     std::future<std::vector<user>> users(user_restrict restriction = {}) const;
 
     // Returns list of users by id.
@@ -446,118 +446,118 @@ public:
     std::future<user> users(const unique_id& id, const user_restrict& restriction = {}) const;
 
     // Returns the specified amount of answers from each user in the list.
-    std::future<std::vector<answer>> users_answers(const std::vector<unique_id>& ids, const uinteger_t answers_per_user, const answer_restrict& restriction = {}) const;
+    std::future<std::vector<answer>> users_answers(const std::vector<unique_id>& ids, uinteger_t answers_per_user, const answer_restrict& restriction = {}) const;
     std::future<std::vector<answer>> users_answers(const std::vector<unique_id>& ids, const answer_restrict& restriction = {}) const;
-    std::future<std::vector<answer>> users_answers(unique_id id, const uinteger_t answers, const answer_restrict& restriction = {}) const;
+    std::future<std::vector<answer>> users_answers(unique_id id, uinteger_t answers, const answer_restrict& restriction = {}) const;
     std::future<std::vector<answer>> users_answers(unique_id id, const answer_restrict& restriction = {}) const;
 
     // Returns the specified amount of badges the users have.
-    std::future<std::vector<badge>> users_badges(const std::vector<unique_id>& ids, const uinteger_t badges_per_user, const badge_restrict& restriction = {}) const;
+    std::future<std::vector<badge>> users_badges(const std::vector<unique_id>& ids, uinteger_t badges_per_user, const badge_restrict& restriction = {}) const;
     std::future<std::vector<badge>> users_badges(const std::vector<unique_id>& ids, const badge_restrict& restriction = {}) const;
-    std::future<std::vector<badge>> users_badges(unique_id id, const uinteger_t badges_per_uses, const badge_restrict& restriction = {}) const;
+    std::future<std::vector<badge>> users_badges(unique_id id, uinteger_t badges_per_uses, const badge_restrict& restriction = {}) const;
     std::future<std::vector<badge>> users_badges(unique_id id, const badge_restrict& restriction = {}) const;
 
     // Returns the specified amount of comments from the users in the list.
-    std::future<std::vector<comment>> users_comments(const std::vector<unique_id>& ids, const uinteger_t comments_per_user, const comment_restrict& restriction = {}) const;
+    std::future<std::vector<comment>> users_comments(const std::vector<unique_id>& ids, uinteger_t comments_per_user, const comment_restrict& restriction = {}) const;
     std::future<std::vector<comment>> users_comments(const std::vector<unique_id>& ids, const comment_restrict& restriction = {}) const;
-    std::future<std::vector<comment>> users_comments(unique_id id, const uinteger_t comments_per_user, const comment_restrict& restriction = {}) const;
+    std::future<std::vector<comment>> users_comments(unique_id id, uinteger_t comments_per_user, const comment_restrict& restriction = {}) const;
     std::future<std::vector<comment>> users_comments(unique_id id, const comment_restrict& restriction = {}) const;
 
     // Returns the reply comments from the user list to a specific user.
     std::future<std::vector<comment>> users_comments(
-            const std::vector<unique_id>& ids, const unique_id& to_id, const uinteger_t comments_per_user, const comment_restrict& restriction = {}) const;
+            const std::vector<unique_id>& ids, const unique_id& to_id, uinteger_t comments_per_user, const comment_restrict& restriction = {}) const;
     std::future<std::vector<comment>> users_comments(const std::vector<unique_id>& ids, const unique_id& to_id, const comment_restrict& restriction = {}) const;
-    std::future<std::vector<comment>> users_comments(unique_id id, const unique_id& to_id, const uinteger_t comments_per_user, const comment_restrict& restriction = {}) const;
+    std::future<std::vector<comment>> users_comments(unique_id id, const unique_id& to_id, uinteger_t comments_per_user, const comment_restrict& restriction = {}) const;
     std::future<std::vector<comment>> users_comments(unique_id id, const unique_id& to_id, const comment_restrict& restriction = {}) const;
 
     // Returns the questions that the users have favorited.
-    std::future<std::vector<question>> users_favorites(const std::vector<unique_id>& ids, const uinteger_t questions_per_user, const favorite_restrict& restriction = {}) const;
+    std::future<std::vector<question>> users_favorites(const std::vector<unique_id>& ids, uinteger_t questions_per_user, const favorite_restrict& restriction = {}) const;
     std::future<std::vector<question>> users_favorites(const std::vector<unique_id>& ids, const favorite_restrict& restriction = {}) const;
-    std::future<std::vector<question>> users_favorites(unique_id id, const uinteger_t questions_per_user, const favorite_restrict& restriction = {}) const;
+    std::future<std::vector<question>> users_favorites(unique_id id, uinteger_t questions_per_user, const favorite_restrict& restriction = {}) const;
     std::future<std::vector<question>> users_favorites(unique_id id, const favorite_restrict& restriction = {}) const;
 
     // Returns the comments that mention the users.
-    std::future<std::vector<comment>> users_mentioned(const std::vector<unique_id>& ids, const uinteger_t comments_per_user, const comment_restrict& restriction = {}) const;
+    std::future<std::vector<comment>> users_mentioned(const std::vector<unique_id>& ids, uinteger_t comments_per_user, const comment_restrict& restriction = {}) const;
     std::future<std::vector<comment>> users_mentioned(const std::vector<unique_id>& ids, const comment_restrict& restriction = {}) const;
-    std::future<std::vector<comment>> users_mentioned(unique_id id, const uinteger_t comments_per_user, const comment_restrict& restriction = {}) const;
+    std::future<std::vector<comment>> users_mentioned(unique_id id, uinteger_t comments_per_user, const comment_restrict& restriction = {}) const;
     std::future<std::vector<comment>> users_mentioned(unique_id id, const comment_restrict& restriction = {}) const;
 
     // Returns a summary of a user's SE network activity.
-    std::future<std::vector<network_activity>> users_activity(const unique_id& id, const uinteger_t amount, const activity_restrict& restriction = {}) const;
+    std::future<std::vector<network_activity>> users_activity(const unique_id& id, uinteger_t amount, const activity_restrict& restriction = {}) const;
     std::future<std::vector<network_activity>> users_activity(const unique_id& id, const activity_restrict& restriction = {}) const;
 
     // Returns a list of notifications for a given user.
-    std::future<std::vector<notification>> users_notifications(const unique_id& id, const uinteger_t amount = default_amount) const;
+    std::future<std::vector<notification>> users_notifications(const unique_id& id, uinteger_t amount = default_amount) const;
 
     // Returns a list of unread notifications for a given user.
-    std::future<std::vector<notification>> users_notifications_unread(const unique_id& id, const uinteger_t amount = default_amount) const;
+    std::future<std::vector<notification>> users_notifications_unread(const unique_id& id, uinteger_t amount = default_amount) const;
 
     // Returns a list of posts from the specified users.
-    std::future<std::vector<post>> users_posts(const std::vector<unique_id>& ids, const uinteger_t posts_per_user, const post_restrict& restriction = {}) const;
+    std::future<std::vector<post>> users_posts(const std::vector<unique_id>& ids, uinteger_t posts_per_user, const post_restrict& restriction = {}) const;
     std::future<std::vector<post>> users_posts(const std::vector<unique_id>& ids, const post_restrict& restriction = {}) const;
-    std::future<std::vector<post>> users_posts(unique_id id, const uinteger_t posts_per_user, const post_restrict& restriction = {}) const;
+    std::future<std::vector<post>> users_posts(unique_id id, uinteger_t posts_per_user, const post_restrict& restriction = {}) const;
     std::future<std::vector<post>> users_posts(unique_id id, const post_restrict& restriction = {}) const;
 
     // Returns a list of privileges a user has.
-    std::future<std::vector<privilege>> users_privileges(const unique_id& id, const uinteger_t amount = default_amount) const;
+    std::future<std::vector<privilege>> users_privileges(const unique_id& id, uinteger_t amount = default_amount) const;
 
     // Returns a list of questions from the specified users.
-    std::future<std::vector<question>> users_questions(const std::vector<unique_id>& ids, const uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
+    std::future<std::vector<question>> users_questions(const std::vector<unique_id>& ids, uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> users_questions(const std::vector<unique_id>& ids, const question_restrict& restriction = {}) const;
-    std::future<std::vector<question>> users_questions(unique_id id, const uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
+    std::future<std::vector<question>> users_questions(unique_id id, uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> users_questions(unique_id id, const question_restrict& restriction = {}) const;
 
     // Returns a list of active bounty questions that the users have.
     std::future<std::vector<question>> users_questions_featured(
-            const std::vector<unique_id>& ids, const uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
+            const std::vector<unique_id>& ids, uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> users_questions_featured(const std::vector<unique_id>& ids, const question_restrict& restriction = {}) const;
-    std::future<std::vector<question>> users_questions_featured(unique_id id, const uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
+    std::future<std::vector<question>> users_questions_featured(unique_id id, uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> users_questions_featured(unique_id id, const question_restrict& restriction = {}) const;
 
     // Returns a list of questions without answers that the specified users have.
     std::future<std::vector<question>> users_questions_no_answers(
-            const std::vector<unique_id>& ids, const uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
+            const std::vector<unique_id>& ids, uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> users_questions_no_answers(const std::vector<unique_id>& ids, const question_restrict& restriction = {}) const;
-    std::future<std::vector<question>> users_questions_no_answers(unique_id id, const uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
+    std::future<std::vector<question>> users_questions_no_answers(unique_id id, uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> users_questions_no_answers(unique_id id, const question_restrict& restriction = {}) const;
 
     // Returns a list of questions with no accepted answer asked by the users in the list.
     std::future<std::vector<question>> users_questions_unaccepted(
-            const std::vector<unique_id>& ids, const uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
+            const std::vector<unique_id>& ids, uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> users_questions_unaccepted(const std::vector<unique_id>& ids, const question_restrict& restriction = {}) const;
-    std::future<std::vector<question>> users_questions_unaccepted(unique_id id, const uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
+    std::future<std::vector<question>> users_questions_unaccepted(unique_id id, uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> users_questions_unaccepted(unique_id id, const question_restrict& restriction = {}) const;
 
     // Returns a list of questions that StackExchange deems to be unanswered from the specified users.
     std::future<std::vector<question>> users_questions_unanswered(
-            const std::vector<unique_id>& ids, const uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
+            const std::vector<unique_id>& ids, uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> users_questions_unanswered(const std::vector<unique_id>& ids, const question_restrict& restriction = {}) const;
-    std::future<std::vector<question>> users_questions_unanswered(unique_id id, const uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
+    std::future<std::vector<question>> users_questions_unanswered(unique_id id, uinteger_t questions_per_user, const question_restrict& restriction = {}) const;
     std::future<std::vector<question>> users_questions_unanswered(unique_id id, const question_restrict& restriction = {}) const;
 
     // Returns a list of reputation changes for the given users.
-    std::future<std::vector<reputation>> users_reputation(const std::vector<unique_id>& ids, const uinteger_t reputations_per_user, const data_t& restriction = {}) const;
+    std::future<std::vector<reputation>> users_reputation(const std::vector<unique_id>& ids, uinteger_t reputations_per_user, const data_t& restriction = {}) const;
     std::future<std::vector<reputation>> users_reputation(const std::vector<unique_id>& ids, const data_t& restriction = {}) const;
-    std::future<std::vector<reputation>> users_reputation(unique_id id, const uinteger_t reputations_per_user, const data_t& restriction = {}) const;
+    std::future<std::vector<reputation>> users_reputation(unique_id id, uinteger_t reputations_per_user, const data_t& restriction = {}) const;
     std::future<std::vector<reputation>> users_reputation(unique_id id, const data_t& restriction = {}) const;
 
     // Returns a list of reputation history changes for the given users.
-    std::future<std::vector<reputation_history>> users_reputation_history(const std::vector<unique_id>& ids, const uinteger_t history_per_user = default_amount) const;
-    std::future<std::vector<reputation_history>> users_reputation_history(unique_id id, const uinteger_t history_per_user = default_amount) const;
+    std::future<std::vector<reputation_history>> users_reputation_history(const std::vector<unique_id>& ids, uinteger_t history_per_user = default_amount) const;
+    std::future<std::vector<reputation_history>> users_reputation_history(unique_id id, uinteger_t history_per_user = default_amount) const;
 
     // Returns a list of private reputation history changes for the given user.
-    std::future<std::vector<reputation_history>> users_reputation_history_full(const unique_id& id, const uinteger_t history_per_user = default_amount) const;
+    std::future<std::vector<reputation_history>> users_reputation_history_full(const unique_id& id, uinteger_t history_per_user = default_amount) const;
 
     // Returns a list of suggested edits the given users have submitted for review.
-    std::future<std::vector<suggested_edit>> users_suggested_edits(const std::vector<unique_id>& ids, const uinteger_t edits_per_user, const edit_restrict& restriction = {}) const;
+    std::future<std::vector<suggested_edit>> users_suggested_edits(const std::vector<unique_id>& ids, uinteger_t edits_per_user, const edit_restrict& restriction = {}) const;
     std::future<std::vector<suggested_edit>> users_suggested_edits(const std::vector<unique_id>& ids, const edit_restrict& restriction = {}) const;
-    std::future<std::vector<suggested_edit>> users_suggested_edits(unique_id id, const uinteger_t edits_per_user, const edit_restrict& restriction = {}) const;
+    std::future<std::vector<suggested_edit>> users_suggested_edits(unique_id id, uinteger_t edits_per_user, const edit_restrict& restriction = {}) const;
     std::future<std::vector<suggested_edit>> users_suggested_edits(unique_id id, const edit_restrict& restriction = {}) const;
 
     // Returns a list of tags the given users have been active in.
-    std::future<std::vector<tag>> users_tags(const std::vector<unique_id>& ids, const uinteger_t tags_per_user, const tag_restrict& restriction = {}) const;
+    std::future<std::vector<tag>> users_tags(const std::vector<unique_id>& ids, uinteger_t tags_per_user, const tag_restrict& restriction = {}) const;
     std::future<std::vector<tag>> users_tags(const std::vector<unique_id>& ids, const tag_restrict& restriction = {}) const;
-    std::future<std::vector<tag>> users_tags(unique_id id, const uinteger_t tags_per_user, const tag_restrict& restriction = {}) const;
+    std::future<std::vector<tag>> users_tags(unique_id id, uinteger_t tags_per_user, const tag_restrict& restriction = {}) const;
     std::future<std::vector<tag>> users_tags(unique_id id, const tag_restrict& restriction = {}) const;
 
     // Returns a list of the top default_amount answers in the tags of the given user.
@@ -569,34 +569,34 @@ public:
     std::future<std::vector<question>> users_tags_top_questions(const unique_id& id, std::string tag, const question_restrict& restriction = {}) const;
 
     // Returns a list of timelines/actions that the given users have taken.
-    std::future<std::vector<user_timeline>> users_timeline(const std::vector<unique_id>& ids, const uinteger_t timelines_per_user, const data_t& restriction = {}) const;
+    std::future<std::vector<user_timeline>> users_timeline(const std::vector<unique_id>& ids, uinteger_t timelines_per_user, const data_t& restriction = {}) const;
     std::future<std::vector<user_timeline>> users_timeline(const std::vector<unique_id>& ids, const data_t& restriction = {}) const;
-    std::future<std::vector<user_timeline>> users_timeline(unique_id id, const uinteger_t timelines_per_user, const data_t& restriction = {}) const;
+    std::future<std::vector<user_timeline>> users_timeline(unique_id id, uinteger_t timelines_per_user, const data_t& restriction = {}) const;
     std::future<std::vector<user_timeline>> users_timeline(unique_id id, const data_t& restriction = {}) const;
 
     // Returns a list of a user's top tags by answer score.
-    std::future<std::vector<top_tag>> users_top_answer_tags(const unique_id& id, const uinteger_t amount = default_amount) const;
+    std::future<std::vector<top_tag>> users_top_answer_tags(const unique_id& id, uinteger_t amount = default_amount) const;
 
     // Returns a list of a user's top tags by question score.
-    std::future<std::vector<top_tag>> users_top_question_tags(const unique_id& id, const uinteger_t amount = default_amount) const;
+    std::future<std::vector<top_tag>> users_top_question_tags(const unique_id& id, uinteger_t amount = default_amount) const;
 
     // Returns a list of a user's top tags by question and answer score added together.
-    std::future<std::vector<top_tag>> users_top_tags(const unique_id& id, const uinteger_t amount = default_amount) const;
+    std::future<std::vector<top_tag>> users_top_tags(const unique_id& id, uinteger_t amount = default_amount) const;
 
     // Returns a list of users who have moderator privileges.
-    std::future<std::vector<user>> users_moderators(const uinteger_t amount, const user_restrict& restriction = {}) const;
+    std::future<std::vector<user>> users_moderators(uinteger_t amount, const user_restrict& restriction = {}) const;
     std::future<std::vector<user>> users_moderators(const user_restrict& restriction = {}) const;
 
     // Returns a list of elected moderators.
-    std::future<std::vector<user>> users_elected_moderators(const uinteger_t amount, const user_restrict& restriction = {}) const;
+    std::future<std::vector<user>> users_elected_moderators(uinteger_t amount, const user_restrict& restriction = {}) const;
     std::future<std::vector<user>> users_elected_moderators(const user_restrict& restriction = {}) const;
 
     // Returns a list of inbox items of the given user.
-    std::future<std::vector<inbox_item>> users_inbox(const unique_id& id, const uinteger_t amount = default_amount) const;
+    std::future<std::vector<inbox_item>> users_inbox(const unique_id& id, uinteger_t amount = default_amount) const;
 
     // Returns a list of unread inbox items of the given user.
-    std::future<std::vector<inbox_item>> users_unread_inbox(const unique_id& id, const uinteger_t amount, const date_t& since) const;
-    std::future<std::vector<inbox_item>> users_unread_inbox(const unique_id&, const uinteger_t amount = default_amount) const;
+    std::future<std::vector<inbox_item>> users_unread_inbox(const unique_id& id, uinteger_t amount, const date_t& since) const;
+    std::future<std::vector<inbox_item>> users_unread_inbox(const unique_id&, uinteger_t amount = default_amount) const;
     std::future<std::vector<inbox_item>> users_unread_inbox(const unique_id& id, const date_t& since) const;
 
     // Returns the access tokens while invalidating them.
@@ -612,48 +612,48 @@ public:
     std::future<access_token> apps_deauthorize(const std::string& token, const data_t& restriction = {}) const;
 
     // Returns a user's inbox.
-    std::future<std::vector<inbox_item>> inbox(const uinteger_t amount, const data_t& restriction = {}) const;
+    std::future<std::vector<inbox_item>> inbox(uinteger_t amount, const data_t& restriction = {}) const;
 
     // Returns a user's unread inbox items.
-    std::future<std::vector<inbox_item>> inbox_unread(const uinteger_t amount, const data_t& restriction = {}) const;
+    std::future<std::vector<inbox_item>> inbox_unread(uinteger_t amount, const data_t& restriction = {}) const;
 
     // Returns a user's notifications.
-    std::future<std::vector<notification>> notifications(const uinteger_t amount, const data_t& restriction = {}) const;
+    std::future<std::vector<notification>> notifications(uinteger_t amount, const data_t& restriction = {}) const;
 
     // Returns a user's unread notifications.
-    std::future<std::vector<notification>> notifications_unread(const uinteger_t amount, const data_t& restriction = {}) const;
+    std::future<std::vector<notification>> notifications_unread(uinteger_t amount, const data_t& restriction = {}) const;
 
     // Returns a list of sites in the StackExchange network.
-    std::future<std::vector<objects::site>> sites(const uinteger_t amount, const data_t& restriction = {}) const;
+    std::future<std::vector<objects::site>> sites(uinteger_t amount, const data_t& restriction = {}) const;
 
     // Returns a list of accounts over the whole network for the given users.
     std::future<std::vector<network_user>> users_associated(
-            const std::vector<unique_id>& ids, const site_type& type, const uinteger_t users_per_user, const data_t& restriction = {}) const;
+            const std::vector<unique_id>& ids, const site_type& type, uinteger_t users_per_user, const data_t& restriction = {}) const;
     std::future<std::vector<network_user>> users_associated(const std::vector<unique_id>& ids, const site_type& type, const data_t& restriction = {}) const;
-    std::future<std::vector<network_user>> users_associated(const std::vector<unique_id>& ids, const uinteger_t users_per_user, const data_t& restriction = {}) const;
+    std::future<std::vector<network_user>> users_associated(const std::vector<unique_id>& ids, uinteger_t users_per_user, const data_t& restriction = {}) const;
     std::future<std::vector<network_user>> users_associated(const std::vector<unique_id>& ids, const data_t& restriction = {}) const;
-    std::future<std::vector<network_user>> users_associated(unique_id id, const site_type& type, const uinteger_t users_per_user, const data_t& restriction = {}) const;
+    std::future<std::vector<network_user>> users_associated(unique_id id, const site_type& type, uinteger_t users_per_user, const data_t& restriction = {}) const;
     std::future<std::vector<network_user>> users_associated(unique_id id, const site_type& type, const data_t& restriction = {}) const;
-    std::future<std::vector<network_user>> users_associated(unique_id id, const uinteger_t users_per_user, const data_t& restriction = {}) const;
+    std::future<std::vector<network_user>> users_associated(unique_id id, uinteger_t users_per_user, const data_t& restriction = {}) const;
     std::future<std::vector<network_user>> users_associated(unique_id id, const data_t& restriction = {}) const;
 
     // Returns a list of merges for the given users.
-    std::future<std::vector<account_merge>> users_merges(const std::vector<unique_id>& ids, const uinteger_t merges_per_user, const data_t& restriction = {}) const;
+    std::future<std::vector<account_merge>> users_merges(const std::vector<unique_id>& ids, uinteger_t merges_per_user, const data_t& restriction = {}) const;
     std::future<std::vector<account_merge>> users_merges(const std::vector<unique_id>& ids, const data_t& restriction = {}) const;
-    std::future<std::vector<account_merge>> users_merges(unique_id id, const uinteger_t merges_per_user, const data_t& restriction = {}) const;
+    std::future<std::vector<account_merge>> users_merges(unique_id id, uinteger_t merges_per_user, const data_t& restriction = {}) const;
     std::future<std::vector<account_merge>> users_merges(unique_id id, const data_t& restriction = {}) const;
 
 private:
     // Executes a request to the StackExchange API.
     template<typename T>
     std::vector<T> execute_requests(
-            const std::string& method, const map_t& properties, T (*parser)(const rapidjson::Value&), const std::size_t total_items, const bool network, const bool write) const;
+            const std::string& method, const map_t& properties, T (*parser)(const rapidjson::Value&), std::size_t total_items, bool network, bool write) const;
     template<typename T> T execute_request(const std::string& method, const map_t& properties, T (*parser)(const rapidjson::Value&), bool network, bool write) const;
 
     // Create a request loop over the given ids.
     template<typename T, typename U>
     std::vector<T> execute_requests_loop(const std::vector<U>& ids, const std::string& base, const std::string& method, const map_t& properties,
-            T (*parser)(const rapidjson::Value&), const std::size_t items_per_id, const bool network, const bool write) const;
+            T (*parser)(const rapidjson::Value&), std::size_t items_per_id, bool network, bool write) const;
 
     std::string api_key_;
     std::string access_token_;

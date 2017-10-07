@@ -97,10 +97,10 @@ std::string parse_enum(const badge_rank& rank);
 
 
 // Convert a value to string.
-std::string parse_value(const integer_t value) noexcept;
-std::string parse_value(const uinteger_t value) noexcept;
-std::string parse_value(const date_t value) noexcept;
-std::string parse_value(const bool value) noexcept;
+std::string parse_value(integer_t value) noexcept;
+std::string parse_value(uinteger_t value) noexcept;
+std::string parse_value(date_t value) noexcept;
+std::string parse_value(bool value) noexcept;
 std::string parse_value(const std::string& value) noexcept;
 std::string parse_value(const badge_rank& value) noexcept;
 std::string parse_value(const period& value);
