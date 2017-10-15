@@ -221,6 +221,9 @@ private:
 };
 
 
+template<typename TT, typename UU> restrict<TT, UU> operator|(restrict<TT, UU> lhs, const restrict<TT, UU>& rhs) noexcept;
+template<typename TT, typename UU> restrict<TT, UU> operator|(restrict<TT, UU> lhs, const UU& rhs) noexcept;
+template<typename TT, typename UU> restrict<TT, UU> operator|(const UU& lhs, restrict<TT, UU> rhs) noexcept;
 
 template<typename T, typename U>
 typename std::enable_if<std::is_enum<T>::value && is_valid_data<U>::value, restrict<T, sort_data_t<T>>>::type operator|(T lhs, const U& rhs) noexcept;
@@ -258,6 +261,112 @@ template<typename T> data_t max(T&& value) noexcept {
     data.values_["max"] = parse_value(std::move(value));
     return data;
 }
+
+// By telling the compiler that the template instantiations come later on, it doesn't need
+// to instantiate them.
+extern template class restrict<user_sort, data_t>;
+extern template class restrict<answer_sort, data_t>;
+extern template class restrict<badge_sort, data_t>;
+extern template class restrict<comment_sort, data_t>;
+extern template class restrict<favorite_sort, data_t>;
+extern template class restrict<activity_sort, data_t>;
+extern template class restrict<post_sort, data_t>;
+extern template class restrict<question_sort, data_t>;
+extern template class restrict<suggested_edit_sort, data_t>;
+extern template class restrict<tag_sort, data_t>;
+extern template class restrict<search_sort, search_data_t>;
+extern template class restrict<synonym_sort, data_t>;
+
+extern template restrict<user_sort, data_t> operator|(restrict<user_sort, data_t>, const restrict<user_sort, data_t>&) noexcept;
+extern template restrict<answer_sort, data_t> operator|(restrict<answer_sort, data_t>, const restrict<answer_sort, data_t>&) noexcept;
+extern template restrict<badge_sort, data_t> operator|(restrict<badge_sort, data_t>, const restrict<badge_sort, data_t>&) noexcept;
+extern template restrict<comment_sort, data_t> operator|(restrict<comment_sort, data_t>, const restrict<comment_sort, data_t>&) noexcept;
+extern template restrict<favorite_sort, data_t> operator|(restrict<favorite_sort, data_t>, const restrict<favorite_sort, data_t>&) noexcept;
+extern template restrict<activity_sort, data_t> operator|(restrict<activity_sort, data_t>, const restrict<activity_sort, data_t>&) noexcept;
+extern template restrict<post_sort, data_t> operator|(restrict<post_sort, data_t>, const restrict<post_sort, data_t>&) noexcept;
+extern template restrict<question_sort, data_t> operator|(restrict<question_sort, data_t>, const restrict<question_sort, data_t>&) noexcept;
+extern template restrict<suggested_edit_sort, data_t> operator|(restrict<suggested_edit_sort, data_t>, const restrict<suggested_edit_sort, data_t>&) noexcept;
+extern template restrict<tag_sort, data_t> operator|(restrict<tag_sort, data_t>, const restrict<tag_sort, data_t>&) noexcept;
+extern template restrict<search_sort, search_data_t> operator|(restrict<search_sort, search_data_t>, const restrict<search_sort, search_data_t>&) noexcept;
+extern template restrict<synonym_sort, data_t> operator|(restrict<synonym_sort, data_t>, const restrict<synonym_sort, data_t>&) noexcept;
+
+extern template restrict<user_sort, data_t> operator|(user_sort, const data_t&) noexcept;
+extern template restrict<answer_sort, data_t> operator|(answer_sort, const data_t&) noexcept;
+extern template restrict<badge_sort, data_t> operator|(badge_sort, const data_t&) noexcept;
+extern template restrict<comment_sort, data_t> operator|(comment_sort, const data_t&) noexcept;
+extern template restrict<favorite_sort, data_t> operator|(favorite_sort, const data_t&) noexcept;
+extern template restrict<activity_sort, data_t> operator|(activity_sort, const data_t&) noexcept;
+extern template restrict<post_sort, data_t> operator|(post_sort, const data_t&) noexcept;
+extern template restrict<question_sort, data_t> operator|(question_sort, const data_t&) noexcept;
+extern template restrict<suggested_edit_sort, data_t> operator|(suggested_edit_sort, const data_t&) noexcept;
+extern template restrict<tag_sort, data_t> operator|(tag_sort, const data_t&) noexcept;
+extern template restrict<search_sort, search_data_t> operator|(search_sort, const search_data_t&) noexcept;
+extern template restrict<synonym_sort, data_t> operator|(synonym_sort, const data_t&) noexcept;
+
+extern template restrict<user_sort, data_t> operator|(const data_t&, user_sort) noexcept;
+extern template restrict<answer_sort, data_t> operator|(const data_t&, answer_sort) noexcept;
+extern template restrict<badge_sort, data_t> operator|(const data_t&, badge_sort) noexcept;
+extern template restrict<comment_sort, data_t> operator|(const data_t&, comment_sort) noexcept;
+extern template restrict<favorite_sort, data_t> operator|(const data_t&, favorite_sort) noexcept;
+extern template restrict<activity_sort, data_t> operator|(const data_t&, activity_sort) noexcept;
+extern template restrict<post_sort, data_t> operator|(const data_t&, post_sort) noexcept;
+extern template restrict<question_sort, data_t> operator|(const data_t&, question_sort) noexcept;
+extern template restrict<suggested_edit_sort, data_t> operator|(const data_t&, suggested_edit_sort) noexcept;
+extern template restrict<tag_sort, data_t> operator|(const data_t&, tag_sort) noexcept;
+extern template restrict<search_sort, search_data_t> operator|(const search_data_t&, search_sort) noexcept;
+extern template restrict<synonym_sort, data_t> operator|(const data_t&, synonym_sort) noexcept;
+
+extern template restrict<user_sort, data_t> operator|(restrict<user_sort, data_t>, const data_t&) noexcept;
+extern template restrict<answer_sort, data_t> operator|(restrict<answer_sort, data_t>, const data_t&) noexcept;
+extern template restrict<badge_sort, data_t> operator|(restrict<badge_sort, data_t>, const data_t&) noexcept;
+extern template restrict<comment_sort, data_t> operator|(restrict<comment_sort, data_t>, const data_t&) noexcept;
+extern template restrict<favorite_sort, data_t> operator|(restrict<favorite_sort, data_t>, const data_t&) noexcept;
+extern template restrict<activity_sort, data_t> operator|(restrict<activity_sort, data_t>, const data_t&) noexcept;
+extern template restrict<post_sort, data_t> operator|(restrict<post_sort, data_t>, const data_t&) noexcept;
+extern template restrict<question_sort, data_t> operator|(restrict<question_sort, data_t>, const data_t&) noexcept;
+extern template restrict<suggested_edit_sort, data_t> operator|(restrict<suggested_edit_sort, data_t>, const data_t&) noexcept;
+extern template restrict<tag_sort, data_t> operator|(restrict<tag_sort, data_t>, const data_t&) noexcept;
+extern template restrict<search_sort, search_data_t> operator|(restrict<search_sort, search_data_t>, const search_data_t&) noexcept;
+extern template restrict<synonym_sort, data_t> operator|(restrict<synonym_sort, data_t>, const data_t&) noexcept;
+
+extern template restrict<user_sort, data_t> operator|(const data_t&, restrict<user_sort, data_t>) noexcept;
+extern template restrict<answer_sort, data_t> operator|(const data_t&, restrict<answer_sort, data_t>) noexcept;
+extern template restrict<badge_sort, data_t> operator|(const data_t&, restrict<badge_sort, data_t>) noexcept;
+extern template restrict<comment_sort, data_t> operator|(const data_t&, restrict<comment_sort, data_t>) noexcept;
+extern template restrict<favorite_sort, data_t> operator|(const data_t&, restrict<favorite_sort, data_t>) noexcept;
+extern template restrict<activity_sort, data_t> operator|(const data_t&, restrict<activity_sort, data_t>) noexcept;
+extern template restrict<post_sort, data_t> operator|(const data_t&, restrict<post_sort, data_t>) noexcept;
+extern template restrict<question_sort, data_t> operator|(const data_t&, restrict<question_sort, data_t>) noexcept;
+extern template restrict<suggested_edit_sort, data_t> operator|(const data_t&, restrict<suggested_edit_sort, data_t>) noexcept;
+extern template restrict<tag_sort, data_t> operator|(const data_t&, restrict<tag_sort, data_t>) noexcept;
+extern template restrict<search_sort, search_data_t> operator|(const search_data_t&, restrict<search_sort, search_data_t>) noexcept;
+extern template restrict<synonym_sort, data_t> operator|(const data_t&, restrict<synonym_sort, data_t>) noexcept;
+
+extern template restrict<user_sort, data_t> operator|(user_sort lhs, const generic_data_t& rhs) noexcept;
+extern template restrict<answer_sort, data_t> operator|(answer_sort lhs, const generic_data_t& rhs) noexcept;
+extern template restrict<badge_sort, data_t> operator|(badge_sort lhs, const generic_data_t& rhs) noexcept;
+extern template restrict<comment_sort, data_t> operator|(comment_sort lhs, const generic_data_t& rhs) noexcept;
+extern template restrict<favorite_sort, data_t> operator|(favorite_sort lhs, const generic_data_t& rhs) noexcept;
+extern template restrict<activity_sort, data_t> operator|(activity_sort lhs, const generic_data_t& rhs) noexcept;
+extern template restrict<post_sort, data_t> operator|(post_sort lhs, const generic_data_t& rhs) noexcept;
+extern template restrict<question_sort, data_t> operator|(question_sort lhs, const generic_data_t& rhs) noexcept;
+extern template restrict<suggested_edit_sort, data_t> operator|(suggested_edit_sort lhs, const generic_data_t& rhs) noexcept;
+extern template restrict<tag_sort, data_t> operator|(tag_sort lhs, const generic_data_t& rhs) noexcept;
+extern template restrict<search_sort, search_data_t> operator|(search_sort lhs, const generic_data_t& rhs) noexcept;
+extern template restrict<synonym_sort, data_t> operator|(synonym_sort lhs, const generic_data_t& rhs) noexcept;
+
+extern template restrict<user_sort, data_t> operator|(const generic_data_t& lhs, user_sort rhs) noexcept;
+extern template restrict<answer_sort, data_t> operator|(const generic_data_t& lhs, answer_sort rhs) noexcept;
+extern template restrict<badge_sort, data_t> operator|(const generic_data_t& lhs, badge_sort rhs) noexcept;
+extern template restrict<comment_sort, data_t> operator|(const generic_data_t& lhs, comment_sort rhs) noexcept;
+extern template restrict<favorite_sort, data_t> operator|(const generic_data_t& lhs, favorite_sort rhs) noexcept;
+extern template restrict<activity_sort, data_t> operator|(const generic_data_t& lhs, activity_sort rhs) noexcept;
+extern template restrict<post_sort, data_t> operator|(const generic_data_t& lhs, post_sort rhs) noexcept;
+extern template restrict<question_sort, data_t> operator|(const generic_data_t& lhs, question_sort rhs) noexcept;
+extern template restrict<suggested_edit_sort, data_t> operator|(const generic_data_t& lhs, suggested_edit_sort rhs) noexcept;
+extern template restrict<tag_sort, data_t> operator|(const generic_data_t& lhs, tag_sort rhs) noexcept;
+extern template restrict<search_sort, search_data_t> operator|(const generic_data_t& lhs, search_sort rhs) noexcept;
+extern template restrict<synonym_sort, data_t> operator|(const generic_data_t& lhs, synonym_sort rhs) noexcept;
 }
 
 #endif
